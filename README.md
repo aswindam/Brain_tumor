@@ -46,6 +46,7 @@ flowchart TD
     end
 
 **📊 The Dataset: Fuel for the Engine**
+
 A model is only as good as its data. Ours was forged on a battlefield of diverse, expert-vetted medical imagery.
 
 Scale: A colossal 27,000+ brain MRI scans.
@@ -57,9 +58,11 @@ Ground Truth: Every image is backed by ironclad, expert-annotated ground truths 
 Preparation: All images were ruthlessly standardized, anonymized, and batch-processed for peak performance.
 
 **🚀 Real-Time API: Intelligence on Demand**
+
 The model's power is accessible through a secure, high-performance API on GCP, ready to integrate with any web app, mobile client, or hospital PACS system.
 
 **Example Response:**
+
 The API returns a clean JSON object with the prediction, a confidence score, and a helpful summary.
 
 JSON
@@ -74,6 +77,7 @@ JSON
 
 
 **🤖 LLM-as-a-Judge: The AI That Audits Itself**
+
 This is our secret weapon. We use Gemini not just to predict, but to police its own predictions in a continuous quality assurance loop.
 
 The primary model makes a call: "Tumor" or "No Tumor."
@@ -89,6 +93,7 @@ LLM Agreement with Ground Truth: 96.2%
 Self-Consistency Accuracy (multi-pass check): 97.1%
 
 **🏆 Why This LLM-Only Approach Wins**
+
 This is more than an upgrade; it's a paradigm shift.
 
 ✅ Zero ML Engineering Hell: Forget designing, training, and debugging complex CNNs. We talk to our model; we don't code it from scratch.
@@ -100,6 +105,7 @@ This is more than an upgrade; it's a paradigm shift.
 🔍 Built-in Paranoid QA: With an LLM self-assessing its own work, we have an automated, relentless quality control system right out of the box.
 
 **📈 The Roadmap: What's Next?**
+
 We're just getting started.
 
 Advanced Diagnostics: Evolve from binary classification to identifying specific tumor types (Glioma, Meningioma, Pituitary).
@@ -109,4 +115,5 @@ AI-Powered Localization: Train the LLM to generate heatmaps or bounding boxes th
 Automated Patient Briefings: Generate clear, patient-friendly diagnosis summaries in natural language, bridging the gap between clinical data and human understanding.
 
 **📝 License**
+
 This project is licensed under the MIT License. See the LICENSE file for details.
