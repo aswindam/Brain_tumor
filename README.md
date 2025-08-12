@@ -28,9 +28,11 @@ This project isn't just another classifier. It's a fully **LLM-orchestrated medi
 Our entire pipeline lives and breathes in the cloud, orchestrated by Gemini. We've thrown out the old ML playbook of designing, training, and managing clunky CNNs. This is lean, intelligent, and powerful.
 
 flowchart TD
-    A[📂 MRI Dataset + Ground Truths] --> B[☁️ Upload to Google Cloud Storage]
-    B --> C[🧠 Gemini 2.5 Pro in Vertex AI]
-    C -- "Model is Deployed as an API" --> E[🚀 GCP API Endpoint]
+    subgraph "Images passing to GCP"
+        A[📂 MRI Dataset + Ground Truths] --> B[☁️ Upload to Google Cloud Storage]
+        B --> C[🧠 Gemini 2.5 Pro in Vertex AI]
+        C -- "Model is Deployed as an API" --> E[🚀 GCP API Endpoint]
+    end
 
     subgraph "Client-Facing Services"
         E -- "Provides Classification" --> F[📲 Real-Time MRI Classification]
