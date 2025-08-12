@@ -59,26 +59,7 @@ Preparation: All images were ruthlessly standardized, anonymized, and batch-proc
 **🚀 Real-Time API: Intelligence on Demand**
 The model's power is accessible through a secure, high-performance API on GCP, ready to integrate with any web app, mobile client, or hospital PACS system.
 
-Below is an example of how a client application would call the API.
-
-**Example API Call (Python):**
-
-**Python**
-
-import requests
-
-# The secure URL for the deployed model on GCP
-MODEL_ENDPOINT_URL = "YOUR_GCP_API_ENDPOINT_URL_HERE"
-
-# Fire away with an MRI scan for classification
-with open('mri_scan.jpg', 'rb') as f:
-    response = requests.post(
-        MODEL_ENDPOINT_URL,
-        files={'file': f}
-    )
-
-print(response.json())
-Example Response:
+**Example Response:**
 The API returns a clean JSON object with the prediction, a confidence score, and a helpful summary.
 
 JSON
@@ -88,6 +69,7 @@ JSON
   "confidence": 0.981,
   "summary": "The scan analysis indicates a high probability of a tumorous mass. You can ask the AI assistant for more details."
 }
+
 ⚡ Warp Speed: Average Response Time clocks in at ~200 ms per image.
 
 
@@ -100,13 +82,13 @@ A second, "judge" instance of Gemini is summoned. It's fed the image, the expert
 
 The judge's mission: Critique the result. Was it correct? Was it confident? Or does it need a human expert to step in?
 
-Performance Metrics:
+**Performance Metrics:**
 
 LLM Agreement with Ground Truth: 96.2%
 
 Self-Consistency Accuracy (multi-pass check): 97.1%
 
-🏆 Why This LLM-Only Approach Wins
+**🏆 Why This LLM-Only Approach Wins**
 This is more than an upgrade; it's a paradigm shift.
 
 ✅ Zero ML Engineering Hell: Forget designing, training, and debugging complex CNNs. We talk to our model; we don't code it from scratch.
