@@ -31,33 +31,37 @@ Our entire pipeline lives and breathes in the cloud, orchestrated by Gemini. We'
 flowchart TD
     A[📂 MRI Dataset + Ground Truths] --> B[☁️ Upload to Google Cloud Storage]
     B --> C[🧠 Gemini 2.5 Pro in Vertex AI]
-    subgraph "Intelligent Core"
-        C -- "Multimodal Reasoning & Classification" --> D[🎯 Prompt Strategy]
-        D -- "Generates Conclusion" --> I[💬 AI Diagnostic Assistant (Chatbot)]
+    C -- "Model is Deployed as an API" --> E[🚀 GCP API Endpoint]
+
+    subgraph "Client-Facing Services"
+        E -- "Provides Classification" --> F[📲 Real-Time MRI Classification]
+        E -- "Powers Conversational AI" --> I[💬 AI Diagnostic Assistant]
     end
-    D --> E[🚀 Deploy as GCP API Endpoint]
-    E --> F[📲 Real-Time MRI Classification & Chat]
-    E --> G[🔁 LLM-as-a-Judge Evaluation Loop]
-    G --> H[📊 Accuracy & Confidence Reports]
+
+    subgraph "Quality Assurance Loop"
+        E -- "Prediction Sent for Review" --> G[🔁 LLM-as-a-Judge Evaluation]
+        G --> H[📊 Accuracy & Confidence Reports]
+    end
 
 **📊 The Dataset: Fuel for the Engine**
-A model is only as good as its data. Ours was trained on a battlefield of diverse, expert-vetted medical imagery.
+A model is only as good as its data. Ours was forged on a battlefield of diverse, expert-vetted medical imagery.
 
 Scale: A colossal 27,000+ brain MRI scans.
 
-Source: Forged from multiple peer-reviewed research papers, open medical repositories, and elite academic datasets.
+Source: Aggregated from multiple peer-reviewed research papers, open medical repositories, and elite academic datasets.
 
 Ground Truth: Every image is backed by ironclad, expert-annotated ground truths from published studies.
 
 Preparation: All images were ruthlessly standardized, anonymized, and batch-processed for peak performance.
 
 **🚀 Real-Time API: Intelligence on Demand**
-The model's power is accessible through a secure, high-performance API on GCP. It's ready to integrate with any web app, mobile client, or hospital PACS system.
-Below is the python example how this model design works in backend.
+The model's power is accessible through a secure, high-performance API on GCP, ready to integrate with any web app, mobile client, or hospital PACS system.
+
+Below is an example of how a client application would call the API.
 
 **Example API Call (Python):**
 
-Python
+**Python**
 
 import requests
 
@@ -72,7 +76,8 @@ with open('mri_scan.jpg', 'rb') as f:
     )
 
 print(response.json())
-Instantaneous Output:
+Example Response:
+The API returns a clean JSON object with the prediction, a confidence score, and a helpful summary.
 
 JSON
 
@@ -81,26 +86,28 @@ JSON
   "confidence": 0.981,
   "summary": "The scan analysis indicates a high probability of a tumorous mass. You can ask the AI assistant for more details."
 }
-Warp Speed: Average Response Time clocks in at ~200 ms per image.
+⚡ Warp Speed: Average Response Time clocks in at ~200 ms per image.
 
-**🔍 LLM-as-a-Judge: The AI That Audits Itself**
-This is our secret weapon. We use Gemini not just to predict, but to police its own predictions.
 
-The model makes a call: "Tumor" or "No Tumor."
+**🤖 LLM-as-a-Judge: The AI That Audits Itself**
+This is our secret weapon. We use Gemini not just to predict, but to police its own predictions in a continuous quality assurance loop.
 
-A second, "judge" instance of Gemini is summoned. It's fed the image, the ground truth, and the first model's prediction.
+The primary model makes a call: "Tumor" or "No Tumor."
+
+A second, "judge" instance of Gemini is summoned. It's fed the image, the expert ground truth, and the primary model's prediction.
 
 The judge's mission: Critique the result. Was it correct? Was it confident? Or does it need a human expert to step in?
 
-Hard Numbers:
+Performance Metrics:
+
 LLM Agreement with Ground Truth: 96.2%
 
 Self-Consistency Accuracy (multi-pass check): 97.1%
 
-**🧩 Why this LLM-Only Approach Dominates**
+🏆 Why This LLM-Only Approach Wins
 This is more than an upgrade; it's a paradigm shift.
 
-✅ Zero ML Engineering Hell: Forget designing, training, and debugging complex CNNs. We talk to our model, we don't code it from scratch.
+✅ Zero ML Engineering Hell: Forget designing, training, and debugging complex CNNs. We talk to our model; we don't code it from scratch.
 
 ⚡ Iterate at the Speed of Thought: Improvements happen through clever prompting and context refinement, not week-long retraining cycles.
 
