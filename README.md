@@ -32,16 +32,16 @@ flowchart TD
     subgraph "Images passing to GCP"
         A[📂 MRI Dataset + Ground Truths] --> B[☁️ Upload to Google Cloud Storage]
         B --> C[🧠 Gemini 2.5 Pro in Vertex AI]
-        C -- "Model is Deployed as an API" --> E[🚀 GCP API Endpoint]
+        C -- "Model is Deployed as an API" --> D[🚀 GCP API Endpoint]
     end
 
     subgraph "Client-Facing Services"
-        E -- "Provides Classification" --> F[📲 Real-Time MRI Classification]
-        E -- "Powers Conversational AI" --> I[💬 AI Diagnostic Assistant]
+        D -- "Provides Classification" --> E[📲 Real-Time MRI Classification]
+        E -- "Powers Conversational AI" --> F[💬 AI Diagnostic Assistant]
     end
 
     subgraph "Quality Assurance Loop"
-        E -- "Prediction Sent for Review" --> G[🔁 LLM-as-a-Judge Evaluation]
+        F -- "Prediction Sent for Review" --> G[🔁 LLM-as-a-Judge Evaluation]
         G --> H[📊 Accuracy & Confidence Reports]
     end
 
